@@ -1,0 +1,1 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/e313a48910e97cdde0ae/maintainability)](https://codeclimate.com/github/Lilian-ARNAUDIES/symfony/maintainability)
