@@ -24,16 +24,16 @@ class SecurityTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('Sign in')->form([
-            '_username' => 'user@example.com',
-            '_password' => 'correctpassword',
+            '_username' => 'email1@mail.com',
+            '_password' => 'azerty',
         ]);
         $this->client->submit($form);
 
-        $this->assertResponseRedirects('');  
+        $this->assertResponseRedirects('/');  
         
         $crawler = $this->client->followRedirect();
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Please sign in'); 
+        $this->assertSelectorTextContains('h1', 'Bienvenue'); 
     }
 
     public function testWrongLogin()
