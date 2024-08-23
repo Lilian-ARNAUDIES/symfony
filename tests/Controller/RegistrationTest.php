@@ -55,11 +55,11 @@ class RegistrationTest extends WebTestCase
         ]);
         $this->client->submit($form);
 
-        $this->assertResponseRedirects('/login');
+        $this->assertResponseRedirects('');
 
         $crawler = $this->client->followRedirect();
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Bienvenue');
+        $this->assertSelectorTextContains('h1', 'Please sign in');
 
         $userRepository = $this->entityManager->getRepository(User::class);
         $createdUser = $userRepository->findOneBy(["email"=>'test@gmail.com']);

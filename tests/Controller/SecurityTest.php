@@ -17,30 +17,30 @@ class SecurityTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/login');
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Login');
+        $this->assertSelectorTextContains('h1', 'Please');
     }
 
     public function testSuccessfulLogin()
     {
         $crawler = $this->client->request('GET', '/login');
-        $form = $crawler->selectButton('Login')->form([
-            '_email' => 'user@example.com',
+        $form = $crawler->selectButton('Sign in')->form([
+            '_username' => 'user@example.com',
             '_password' => 'correctpassword',
         ]);
         $this->client->submit($form);
 
-        $this->assertResponseRedirects('/home');  
+        $this->assertResponseRedirects('');  
         
         $crawler = $this->client->followRedirect();
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Home'); 
+        $this->assertSelectorTextContains('h1', 'Please sign in'); 
     }
 
     public function testWrongLogin()
     {
         $crawler = $this->client->request('GET', '/login');
-        $form = $crawler->selectButton('Login')->form([
-            '_email' => 'user@example.com',
+        $form = $crawler->selectButton('Sign in')->form([
+            '_username' => 'user@example.com',
             '_password' => 'wrongpassword',
         ]);
         $this->client->submit($form);
