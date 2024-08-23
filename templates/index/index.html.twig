@@ -4,7 +4,7 @@
 
 {% block body %}
     {% if app.user %}
-        <h1>Bienvenue, {{ app.user.firstname }} !</h1>
+        <h1>Bienvenue, {{ app.user.firstname }} !!!</h1>
         <p>Vous êtes connecté.</p>
         <a href="{{ path('app_logout') }}">Déconnexion</a>
     {% else %}
